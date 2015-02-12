@@ -24,7 +24,8 @@ namespace LinqConsole
 
         public static string Right(this string name, int length)
         {
-            return name == null ? null : name.Length < length ? name : name.Substring(length);
+     
+            return name == null ? null : name.Length <= length ? name : name.Substring(length);
         }
     }
 }
