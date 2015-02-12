@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq;//extemson methods to IEnumerable
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +14,12 @@ namespace LinqConsole
         {
             //--< Populate our data >--//
             var names = GetNames(); //array of strings
+            //names.Select(string => {},n => { Console.WriteLine(n); })};
+            names.OrderBy(n => n.Length);
+            foreach (var name in names)
+            {
+               
+            }
             var numbers = GetNumbers(); //array of numbers
             #region Get Inventory Objects
             var parts = Part.SelectAll();
@@ -22,17 +28,19 @@ namespace LinqConsole
             var orders = SalesOrder.SelectAll();
             #endregion
 
+            decimal totalSales = customers.Sum( c => c.Balance  );
+            Console.WriteLine("total sales  accounts reciveble is {0}",totalSales);
             //--< Modify method SumNumbers( ) to return the sum of the numbers in the array >--//
             Console.WriteLine("The sum of the numbers is {0}", SumNumbers(numbers));
-
+            Console.WriteLine("the sum of the numbersusing linq is {0}",numbers.Sum());
             //--< Modify method LargestNumber( ) to return the largest number in the array >--//
             Console.WriteLine("The largest number is {0}", LargestNumber(numbers));
-
+            Console.WriteLine("The largest number using linq is {0}", numbers.Max());
             #region Anonymous Methods
             //--< These are "anonymous methods" because the methods have no names >--//
             Numbers firstNum = delegate(int[] num) { return num[0]; };      //--< Uses delegate <<<
             Numbers lastNum = (num) => { return num[num.Length - 1]; };     //--< Same but uses a lambda "(num) =>" <<<
-
+ 
             Console.WriteLine("The first number in the array is {0}", firstNum(numbers));
             Console.WriteLine("The last number in the array is {0}", lastNum(numbers));
             #endregion
