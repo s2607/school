@@ -13,8 +13,8 @@ namespace LinqConsole
         static void Main(string[] args)
         {
             //--< Populate our data >--//
-            var names = GetNames();
-            var numbers = GetNumbers();
+            var names = GetNames(); //array of strings
+            var numbers = GetNumbers(); //array of numbers
             #region Get Inventory Objects
             var parts = Part.SelectAll();
             var receipts = Receipt.SelectAll();
@@ -41,11 +41,23 @@ namespace LinqConsole
 
         private static int SumNumbers(int[] numbers)
         {
-            return 0;       //--< Change this to return the sum of the numbers in the collection
+            int iSum=0;
+          
+            foreach (int i in numbers)
+            {
+          
+              iSum += i;
+            }
+            return iSum;       //--< Change this to return the sum of the numbers in the collection
         }
         private static int LargestNumber(int[] numbers)
         {
-            return 0;       //--< Change this to return the largest number in the collection
+            int largest = 0;
+            foreach (int i in numbers)
+            {
+                largest = largest < i ? i : largest;
+            }
+            return largest;
         }
 
 
@@ -63,7 +75,10 @@ namespace LinqConsole
         }
         #endregion
     }
-
+    //tese are for your refrence, the IDE automaticly handle hidding and expanding them like a block
+    //concrete (not static) methods apply to the object itself
+    //static apply to the class
+    //there are regions for these
     #region Internal Classes
     public class Part
     {
