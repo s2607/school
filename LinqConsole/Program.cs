@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;//extemson methods to IEnumerable
 using System.Text;
 using System.Threading.Tasks;
+/*language integrated query*/
 
 namespace LinqConsole
 {
